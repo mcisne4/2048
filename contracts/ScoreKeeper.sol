@@ -22,9 +22,9 @@ contract ScoreKeeper {
 
     // --- Constructor ---
     constructor(){
-        globalHighScore1 = HighScore("user_1", 0);
-        globalHighScore2 = HighScore("user_2", 0);
-        globalHighScore3 = HighScore("user_3", 0);
+        globalHighScore1 = HighScore("player.1", 0);
+        globalHighScore2 = HighScore("player.2", 0);
+        globalHighScore3 = HighScore("player.3", 0);
     }
 
 
