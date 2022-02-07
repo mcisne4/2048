@@ -1,6 +1,7 @@
 {
   "name": "routify-app",
   "version": "1.0.0",
+  "license": "MIT",
   "@comments scripts": {
     "dev": "run all dev:* scripts",
     "dev:routify": "generate Routify's routes.js on filechange",

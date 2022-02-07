@@ -1,0 +1,12 @@
+@use '_resets';
+@use '_fonts';
+
+body {
+    @extend .text;
+    background-color: #121212;
+    color: #d5d5d5;
+}
+
+button {
+    @extend .text;
+}
