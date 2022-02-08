@@ -59,7 +59,7 @@
         font-size: 5rem;
         font-weight: 900;
         letter-spacing: 0.5rem;
-        color: rgb(2, 229, 236);
+        color: #02e5ec;
     }
     h2 {
         font-weight: 700;

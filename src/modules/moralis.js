@@ -1,5 +1,6 @@
+import { set } from 'core-js/core/dict'
 import { abi } from '../contracts/score-keeper-abi'
-import { topScores, topUsernames } from '../stores/scoreKeeperStore'
+import { topScores, topUsernames, chainStore } from '../stores/scoreKeeperStore'
 
 async function readFunction(functionName, params = undefined){
     const web3 = await Moralis.enableWeb3({ provider: "metamask" })
@@ -20,8 +21,6 @@ async function readFunction(functionName, params = undefined){
 
 export async function getHighScores(){
     const [usernames, scores] = await readFunction('getHighScores')
-    // console.log('Scores:', scores)
-    // console.log('Usernames:', usernames)
     topScores.set(scores)
     topUsernames.set(usernames)
 }
@@ -32,3 +31,25 @@ export async function getUserScores(){
 }
 
 
+export async function getChain(){
+    const web3 = await Moralis.enableWeb3({ provider: "metamask" })
+
+    const chainId = await Moralis.chainId
+    let chainName = 'N/A'
+    chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
+    chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
+    chainStore.set(chainName)
+}
+
+export async function chainListener(){
+    const web3 = await Moralis.enableWeb3({ provider: "metamask" })
+
+    const unsubscribe = Moralis.onChainChanged((chainId) => {
+        let chainName = 'N/A'
+        chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
+        chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
+        chainStore.set(chainName)
+    });
+
+    return unsubscribe
+}

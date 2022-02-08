@@ -14,7 +14,8 @@
     <div class="background" on:click={() => (opened = false)} />
 {/if}
 <div class="container">
-    <button class="main" on:click={() => (opened = !opened)}>
+    <p class="description">Username</p>
+    <button class="main" class:opened on:click={() => (opened = !opened)}>
         <span>
             {$userStore}
         </span>
@@ -47,11 +48,17 @@
         left: 0;
         width: 100%;
         height: 100%;
+        z-index: 10;
     }
     .container {
         display: flex;
         flex-direction: column;
         position: relative;
+    }
+    .description {
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+        color: #9c9c9c;
     }
 
     button {
@@ -74,7 +81,11 @@
     .logout {
         position: absolute;
         width: 100%;
-        top: 2.1rem;
+        top: 3.2rem;
+        z-index: 15;
+    }
+    .opened {
+        z-index: 15;
     }
 
     svg {
