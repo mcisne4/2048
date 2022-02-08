@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.4
- * File generated Tue Feb 08 2022 02:51:20 GMT-0600 (Central Standard Time)
+ * File generated Tue Feb 08 2022 16:19:20 GMT-0600 (Central Standard Time)
  */
 
 export const __version = "2.18.4"
-export const __timestamp = "2022-02-08T08:51:20.488Z"
+export const __timestamp = "2022-02-08T22:19:20.465Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -123,111 +123,6 @@ export const _tree = {
       "path": "/index",
       "id": "_index",
       "component": () => import('../src/pages/index.svelte').then(m => m.default)
-    },
-    {
-      "isFile": true,
-      "isDir": true,
-      "file": "_layout.svelte",
-      "filepath": "/guide/_layout.svelte",
-      "name": "_layout",
-      "ext": "svelte",
-      "badExt": false,
-      "absolutePath": "C:/_dev/web3/2048/src/pages/guide/_layout.svelte",
-      "children": [
-        {
-          "isFile": true,
-          "isDir": false,
-          "file": "index.svelte",
-          "filepath": "/guide/index.svelte",
-          "name": "index",
-          "ext": "svelte",
-          "badExt": false,
-          "absolutePath": "C:/_dev/web3/2048/src/pages/guide/index.svelte",
-          "importPath": "../src/pages/guide/index.svelte",
-          "isLayout": false,
-          "isReset": false,
-          "isIndex": true,
-          "isFallback": false,
-          "isPage": true,
-          "ownMeta": {},
-          "meta": {
-            "recursive": true,
-            "preload": false,
-            "prerender": true
-          },
-          "path": "/guide/index",
-          "id": "_guide_index",
-          "component": () => import('../src/pages/guide/index.svelte').then(m => m.default)
-        },
-        {
-          "isFile": true,
-          "isDir": false,
-          "file": "routify.svelte",
-          "filepath": "/guide/routify.svelte",
-          "name": "routify",
-          "ext": "svelte",
-          "badExt": false,
-          "absolutePath": "C:/_dev/web3/2048/src/pages/guide/routify.svelte",
-          "importPath": "../src/pages/guide/routify.svelte",
-          "isLayout": false,
-          "isReset": false,
-          "isIndex": false,
-          "isFallback": false,
-          "isPage": true,
-          "ownMeta": {},
-          "meta": {
-            "recursive": true,
-            "preload": false,
-            "prerender": true
-          },
-          "path": "/guide/routify",
-          "id": "_guide_routify",
-          "component": () => import('../src/pages/guide/routify.svelte').then(m => m.default)
-        },
-        {
-          "isFile": true,
-          "isDir": false,
-          "file": "vite.svelte",
-          "filepath": "/guide/vite.svelte",
-          "name": "vite",
-          "ext": "svelte",
-          "badExt": false,
-          "absolutePath": "C:/_dev/web3/2048/src/pages/guide/vite.svelte",
-          "importPath": "../src/pages/guide/vite.svelte",
-          "isLayout": false,
-          "isReset": false,
-          "isIndex": false,
-          "isFallback": false,
-          "isPage": true,
-          "ownMeta": {},
-          "meta": {
-            "recursive": true,
-            "preload": false,
-            "prerender": true
-          },
-          "path": "/guide/vite",
-          "id": "_guide_vite",
-          "component": () => import('../src/pages/guide/vite.svelte').then(m => m.default)
-        }
-      ],
-      "isLayout": true,
-      "isReset": false,
-      "isIndex": false,
-      "isFallback": false,
-      "isPage": false,
-      "importPath": "../src/pages/guide/_layout.svelte",
-      "ownMeta": {
-        "index": 50
-      },
-      "meta": {
-        "index": 50,
-        "recursive": true,
-        "preload": false,
-        "prerender": true
-      },
-      "path": "/guide",
-      "id": "_guide__layout",
-      "component": () => import('../src/pages/guide/_layout.svelte').then(m => m.default)
     }
   ],
   "isLayout": true,

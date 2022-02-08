@@ -1,5 +1,9 @@
 <script>
     import AppHeader from '../components/AppHeader.svelte'
+    import { getHighScores, getUserScores } from '../modules/moralis'
+
+    // getHighScores()
+    getUserScores()
 </script>
 
 <div class="container">

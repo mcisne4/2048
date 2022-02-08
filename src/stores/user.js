@@ -19,6 +19,8 @@ function createUserStore(){
 
             if(user){
                 set(user.idToken.sub)
+                // const web3 = await Moralis.enableWeb3({ provider: "metamask" });
+                // console.log('Web3 Provider!! -->\n', web3)
             }
         } catch (err) {
             console.error('userStore.login() Error:\n', err)
