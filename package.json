@@ -63,5 +63,8 @@
   },
   "ava": {
     "verbose": true
+  },
+  "dependencies": {
+    "@uauth/js": "^0.7.9"
   }
 }

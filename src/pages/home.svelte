@@ -1,13 +1,12 @@
 <script>
-    const ud_id = import.meta.env.VITE_UD_ID
-    const ui_secret = import.meta.env.VITE_UD_SECRET
+    import { userStore } from '../stores/user'
 </script>
 
 <div class="container">
     <h1>2048</h1>
     <h2>Saved to the Blockchain</h2>
     <p>Login to get start playing</p>
-    <button class="text-ud">
+    <button class="text-ud" on:click={userStore.login}>
         <svg
             viewBox="0 0 480 480"
             xmlns="http://www.w3.org/2000/svg"
