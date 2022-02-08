@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.4
- * File generated Mon Feb 07 2022 12:29:00 GMT-0600 (Central Standard Time)
+ * File generated Mon Feb 07 2022 19:29:05 GMT-0600 (Central Standard Time)
  */
 
 export const __version = "2.18.4"
-export const __timestamp = "2022-02-07T18:29:00.154Z"
+export const __timestamp = "2022-02-08T01:29:05.989Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes"
@@ -48,6 +48,56 @@ export const _tree = {
       "path": "/_fallback",
       "id": "__fallback",
       "component": () => import('../src/pages/_fallback.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "app.svelte",
+      "filepath": "/app.svelte",
+      "name": "app",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "C:/_dev/web3/2048/src/pages/app.svelte",
+      "importPath": "../src/pages/app.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": false,
+        "prerender": true
+      },
+      "path": "/app",
+      "id": "_app",
+      "component": () => import('../src/pages/app.svelte').then(m => m.default)
+    },
+    {
+      "isFile": true,
+      "isDir": false,
+      "file": "home.svelte",
+      "filepath": "/home.svelte",
+      "name": "home",
+      "ext": "svelte",
+      "badExt": false,
+      "absolutePath": "C:/_dev/web3/2048/src/pages/home.svelte",
+      "importPath": "../src/pages/home.svelte",
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": true,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": false,
+        "prerender": true
+      },
+      "path": "/home",
+      "id": "_home",
+      "component": () => import('../src/pages/home.svelte').then(m => m.default)
     },
     {
       "isFile": true,

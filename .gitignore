@@ -10,3 +10,5 @@ artifacts
 
 .vscode
 temp
+
+.env.*
