@@ -1,5 +1,10 @@
 <script>
+    import { goto } from '@roxi/routify'
     import { userStore } from '../stores/user'
+
+    $: if ($userStore) {
+        $goto('/app')
+    }
 </script>
 
 <div class="container">

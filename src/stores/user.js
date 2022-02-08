@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store'
 import UAuth from '@uauth/js'
 
-const uauth = new UAuth({
+export const uauth = new UAuth({
   clientID: import.meta.env.VITE_UD_ID,
   clientSecret: import.meta.env.VITE_UD_SECRET,
   redirectUri: import.meta.env.VITE_UD_REDIRECT_URI,
@@ -18,8 +18,7 @@ function createUserStore(){
             const user = await uauth.loginWithPopup()
 
             if(user){
-                console.log(user)
-                set(user)
+                set(user.idToken.sub)
             }
         } catch (err) {
             console.error('userStore.login() Error:\n', err)
@@ -27,11 +26,15 @@ function createUserStore(){
     }
 
     function logout(){
-        set(undefined)
+        uauth
+            .logout()
+            .then(() => set(undefined))
+            .catch(err => console.error('logout() Error:\n', err))
     }
 
     return {
         subscribe,
+        set,
         login,
         logout,
     }

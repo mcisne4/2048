@@ -1,5 +1,6 @@
 @use '_resets';
 @use '_fonts';
+@use '_variables';
 
 body {
     @extend .text;
