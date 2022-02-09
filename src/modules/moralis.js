@@ -1,6 +1,11 @@
-import { set } from 'core-js/core/dict'
 import { abi } from '../contracts/score-keeper-abi'
-import { topScores, topUsernames, chainStore } from '../stores/scoreKeeperStore'
+import { 
+    topScores,
+    topUsernames,
+    chainStore,
+    userScoresStore,
+    userHighScoreStore,
+} from '../stores/scoreKeeperStore'
 
 async function readFunction(functionName, params = undefined){
     const web3 = await Moralis.enableWeb3({ provider: "metamask" })
@@ -26,8 +31,21 @@ export async function getHighScores(){
 }
 
 export async function getUserScores(){
-    const chainId = await Moralis.chainId
-    console.log(chainId)
+    // const web3 = await Moralis.enableWeb3({ provider: "metamask" })
+
+    const account = await Moralis.account
+
+    const [scores, highScore] = await readFunction('getUserScores', {
+        _address: account
+    })
+
+    userScoresStore.set(scores)
+    userHighScoreStore.set(highScore)
+    // console.log('Scores:', scores)
+    // console.log('High Score:', highScore)
+    // console.log(account); // "0x...."
+    // const chainId = await Moralis.chainId
+    // console.log(chainId)
 }
 
 

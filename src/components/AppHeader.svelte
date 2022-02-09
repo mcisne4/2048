@@ -1,7 +1,6 @@
 <script>
     import Username from './Username.svelte'
     import Chain from './Chain.svelte'
-    // import { url } from '@roxi/routify'
 </script>
 
 <div class="background">

@@ -8,3 +8,7 @@ export const topUsernames = writable([
     'n/a',
     'n/a'
 ])
+
+
+export const userScoresStore = writable([])
+export const userHighScoreStore = writable(0)

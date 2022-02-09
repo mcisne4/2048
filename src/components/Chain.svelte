@@ -25,6 +25,7 @@
         display: flex;
         align-items: center;
         /* height: 2rem; */
+        justify-content: flex-end;
     }
     .name {
         font-size: 0.9rem;
