@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store'
 import UAuth from '@uauth/js'
+import { getChain } from '../modules/moralis'
 
 export const uauth = new UAuth({
   clientID: import.meta.env.VITE_UD_ID,
@@ -19,6 +20,9 @@ function createUserStore(){
 
             if(user){
                 set(user.idToken.sub)
+                // const web3 = await Moralis.enableWeb3({ provider: "metamask" })
+                await Moralis.enableWeb3({ provider: "metamask" })
+                await getChain()
             }
         } catch (err) {
             console.error('userStore.login() Error:\n', err)

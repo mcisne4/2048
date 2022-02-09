@@ -7,9 +7,8 @@ import {
     userHighScoreStore,
 } from '../stores/scoreKeeperStore'
 
-async function readFunction(functionName, params = undefined){
-    const web3 = await Moralis.enableWeb3({ provider: "metamask" })
 
+async function readFunction(functionName, params = undefined){
     let readOptions = {
         contractAddress: "0xf36bF3A42295581c6f6864Dd775e5E0A2f9eB655",
         functionName,
@@ -24,15 +23,16 @@ async function readFunction(functionName, params = undefined){
 }
 
 
+// --- FUNCTION: getHighScores() ---
 export async function getHighScores(){
     const [usernames, scores] = await readFunction('getHighScores')
     topScores.set(scores)
     topUsernames.set(usernames)
 }
 
-export async function getUserScores(){
-    // const web3 = await Moralis.enableWeb3({ provider: "metamask" })
 
+// --- FUNCTION: getUserScores() ---
+export async function getUserScores(){
     const account = await Moralis.account
 
     const [scores, highScore] = await readFunction('getUserScores', {
@@ -41,32 +41,47 @@ export async function getUserScores(){
 
     userScoresStore.set(scores)
     userHighScoreStore.set(highScore)
-    // console.log('Scores:', scores)
-    // console.log('High Score:', highScore)
-    // console.log(account); // "0x...."
-    // const chainId = await Moralis.chainId
-    // console.log(chainId)
 }
 
 
+// --- FUNCTION: getChain() ---
 export async function getChain(){
-    const web3 = await Moralis.enableWeb3({ provider: "metamask" })
-
     const chainId = await Moralis.chainId
     let chainName = 'N/A'
     chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
     chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
     chainStore.set(chainName)
+
+    console.log('--> getChain():', chainName)
+    if(chainName !== 'N/A'){
+        getUserScores()
+        getHighScores()
+    } else {
+        userScoresStore.set([])
+        userHighScoreStore.set('N/A')
+        topScores.set([0,0,0])
+        topUsernames.set(['N/A', 'N/A', 'N/A'])        
+    }
 }
 
-export async function chainListener(){
-    const web3 = await Moralis.enableWeb3({ provider: "metamask" })
 
+// --- FUNCTION: chainListener() ---
+export async function chainListener(){
     const unsubscribe = Moralis.onChainChanged((chainId) => {
         let chainName = 'N/A'
         chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
         chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
         chainStore.set(chainName)
+
+        if(chainName !== 'N/A'){
+            getUserScores()
+            getHighScores()
+        } else {
+            userScoresStore.set([])
+            userHighScoreStore.set('N/A')
+            topScores.set([0,0,0])
+            topUsernames.set(['N/A', 'N/A', 'N/A'])        
+        }
     });
 
     return unsubscribe

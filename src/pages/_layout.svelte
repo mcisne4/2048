@@ -5,7 +5,6 @@
     import { onMount } from 'svelte'
 
     onMount(async () => {
-        await getChain()
         const chainListenerUnsubscribe = await chainListener()
 
         return () => {
@@ -16,8 +15,6 @@
     uauth
         .user()
         .then(user => userStore.set(user.sub))
-        // .then(() => console.log('-> Logged in...'))
-        // .catch(err => console.log('-> Not logged in...'))
         .catch(err => userStore.set(undefined))
 
     $: if (!$userStore) {
