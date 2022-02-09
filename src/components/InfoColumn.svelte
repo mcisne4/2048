@@ -2,6 +2,7 @@
     import UserScores from './UserScores.svelte'
     import CurrentScore from './CurrentScore.svelte'
     import TopScores from './TopScores.svelte'
+    import Game from './Game.svelte'
 </script>
 
 <div class="container">
@@ -14,8 +15,7 @@
             <UserScores />
         </div>
         <div class="page-content">
-            <h1>Content</h1>
-            <slot />
+            <Game />
         </div>
     </div>
 </div>
@@ -37,6 +37,7 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        max-width: 60%;
     }
     .info-column {
         background-color: black;
