@@ -9,70 +9,63 @@ import {
 
 
 async function readFunction(functionName, params = undefined){
-    let readOptions = {
-        contractAddress: "0xf36bF3A42295581c6f6864Dd775e5E0A2f9eB655",
-        functionName,
-        abi
-    }
+    try {
+        let readOptions = {
+            contractAddress: "0xf36bF3A42295581c6f6864Dd775e5E0A2f9eB655",
+            functionName,
+            abi
+        }
+        
+        params !== undefined && (readOptions.params = params)
     
-    params !== undefined && (readOptions.params = params)
-
-    const results = await Moralis.executeFunction(readOptions)
-
-    return results
+        const results = await Moralis.executeFunction(readOptions)
+    
+        return results
+    } catch (error) {
+        console.error('readFunction() Error:\n', error)
+    }
 }
 
 
 // --- FUNCTION: getHighScores() ---
 export async function getHighScores(){
-    const [usernames, scores] = await readFunction('getHighScores')
-    topScores.set(scores)
-    topUsernames.set(usernames)
+    try {
+        const [usernames, scores] = await readFunction('getHighScores')
+        topScores.set(scores)
+        topUsernames.set(usernames)
+    } catch (err) {
+        console.error('getHighScores() Error:\n', err)
+    }
 }
 
 
 // --- FUNCTION: getUserScores() ---
 export async function getUserScores(){
-    const account = await Moralis.account
-
-    const [scores, highScore] = await readFunction('getUserScores', {
-        _address: account
-    })
-
-    userScoresStore.set(scores)
-    userHighScoreStore.set(highScore)
+    try {
+        const account = await Moralis.account
+    
+        const [scores, highScore] = await readFunction('getUserScores', {
+            _address: account
+        })
+    
+        userScoresStore.set(scores)
+        userHighScoreStore.set(highScore)
+    } catch (err) {
+        console.error('getUserScores() Error:\n', err)
+    }
 }
 
 
 // --- FUNCTION: getChain() ---
 export async function getChain(){
-    const chainId = await Moralis.chainId
-    let chainName = 'N/A'
-    chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
-    chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
-    chainStore.set(chainName)
-
-    console.log('--> getChain():', chainName)
-    if(chainName !== 'N/A'){
-        getUserScores()
-        getHighScores()
-    } else {
-        userScoresStore.set([])
-        userHighScoreStore.set('N/A')
-        topScores.set([0,0,0])
-        topUsernames.set(['N/A', 'N/A', 'N/A'])        
-    }
-}
-
-
-// --- FUNCTION: chainListener() ---
-export async function chainListener(){
-    const unsubscribe = Moralis.onChainChanged((chainId) => {
+    try {
+        const chainId = await Moralis.chainId
         let chainName = 'N/A'
         chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
         chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
         chainStore.set(chainName)
-
+    
+        // console.log('--> getChain():', chainName)
         if(chainName !== 'N/A'){
             getUserScores()
             getHighScores()
@@ -82,7 +75,34 @@ export async function chainListener(){
             topScores.set([0,0,0])
             topUsernames.set(['N/A', 'N/A', 'N/A'])        
         }
-    });
+    } catch (err) {
+        console.error('getChain() Error:\n', err)
+    }
+}
 
-    return unsubscribe
+
+// --- FUNCTION: chainListener() ---
+export async function chainListener(){
+    try {
+        const unsubscribe = Moralis.onChainChanged((chainId) => {
+            let chainName = 'N/A'
+            chainId === '0x13881' && (chainName = 'Polygon (Mumbai)')
+            chainId === '0x4' && (chainName = 'Ethereum (Rinkeby)')
+            chainStore.set(chainName)
+    
+            if(chainName !== 'N/A'){
+                getUserScores()
+                getHighScores()
+            } else {
+                userScoresStore.set([])
+                userHighScoreStore.set('N/A')
+                topScores.set([0,0,0])
+                topUsernames.set(['N/A', 'N/A', 'N/A'])        
+            }
+        });
+    
+        return unsubscribe
+    } catch (err) {
+        console.error('chainListener() Error:\n', err)
+    }
 }

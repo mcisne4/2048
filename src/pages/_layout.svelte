@@ -1,14 +1,18 @@
 <script>
     import { goto } from '@roxi/routify'
     import { userStore, uauth } from '../stores/user'
-    import { getChain, chainListener } from '../modules/moralis'
+    import { chainListener } from '../modules/moralis'
     import { onMount } from 'svelte'
 
     onMount(async () => {
-        const chainListenerUnsubscribe = await chainListener()
+        try {
+            const chainListenerUnsubscribe = await chainListener()
 
-        return () => {
-            chainListenerUnsubscribe()
+            return () => {
+                chainListenerUnsubscribe()
+            }
+        } catch (err) {
+            console.error('_layout Error:\n', err)
         }
     })
 
