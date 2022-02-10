@@ -54,7 +54,7 @@ export function _generateRandom(boardArray){
     const randomIndex = available[Math.floor(available.length * Math.random())]
     current[randomIndex] = 2
     return {
-        data: current,
+        board: current,
         newIndex: randomIndex
     }
 }

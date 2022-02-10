@@ -1,14 +1,45 @@
 <script>
+    import { onMount } from 'svelte'
     import GameBackground from './GameBackground.svelte'
     import GameTiles from './GameTiles.svelte'
-    import { boardStore } from '../stores/gameStore'
+
+    import StateInitial from './StateInitial.svelte'
+    import StateGameOver from './StateGameOver.svelte'
+
+    import { boardStore, gameState } from '../stores/gameStore'
 
     let width
-    // let started = false
-    // console.log('Client Width:', width)
 
-    // boardStore.generateRandom()
-    // boardStore.generateRandom()
+    function keyListen(e) {
+        if ($gameState === 'playing') {
+            e.preventDefault()
+            switch (e.keyCode) {
+                case 37:
+                    boardStore.shiftLeft()
+                    setTimeout(boardStore.generateRandom, 200)
+                    break
+                case 38:
+                    boardStore.shiftUp()
+                    setTimeout(boardStore.generateRandom, 200)
+                    break
+                case 39:
+                    boardStore.shiftRight()
+                    setTimeout(boardStore.generateRandom, 200)
+                    break
+                case 40:
+                    boardStore.shiftDown()
+                    setTimeout(boardStore.generateRandom, 200)
+                    break
+            }
+        }
+    }
+
+    onMount(() => {
+        document.addEventListener('keydown', keyListen)
+        return () => {
+            document.removeEventListener('keydown', keyListen)
+        }
+    })
 </script>
 
 <div class="container">
@@ -20,6 +51,12 @@
         >
             <GameBackground {width} />
             <GameTiles {width} />
+            {#if $gameState === 'initial'}
+                <StateInitial {width} />
+            {/if}
+            {#if $gameState === 'game over'}
+                <StateGameOver {width} />
+            {/if}
         </div>
     </div>
 
@@ -36,7 +73,6 @@
 
 <style lang="scss">
     .container {
-        // border: 1px solid red;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
