@@ -44,6 +44,13 @@
         </svg>
         <span> Login with Unstoppable </span>
     </button>
+    <p class="note">
+        <em>
+            <b>NOTE:</b> The game currently requires MetaMask and is only running
+            on the Rinkeby (Ethereum Testnet) network and the Mumbai (Polygon Testnet)
+            network
+        </em>
+    </p>
 </div>
 
 <style lang="scss">
@@ -90,5 +97,15 @@
         &:active {
             background-color: #4f62ce;
         }
+    }
+    .note {
+        margin-top: 2.5rem;
+        max-width: 20rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.05rem;
+        line-height: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+        color: rgb(151, 148, 148);
     }
 </style>
