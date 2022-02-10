@@ -5,6 +5,7 @@
 
     import StateInitial from './StateInitial.svelte'
     import StateGameOver from './StateGameOver.svelte'
+    import StateSaving from './StateSaving.svelte'
 
     import { boardStore, gameState } from '../stores/gameStore'
 
@@ -56,6 +57,9 @@
             {/if}
             {#if $gameState === 'game over'}
                 <StateGameOver {width} />
+            {/if}
+            {#if $gameState === 'saving'}
+                <StateSaving {width} />
             {/if}
         </div>
     </div>

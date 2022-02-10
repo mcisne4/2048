@@ -1,6 +1,5 @@
 <script>
     import { boardStore, gameState, scoreStore } from '../stores/gameStore'
-    import { addScore } from '../modules/moralis'
 
     export let width
 
@@ -10,11 +9,6 @@
         boardStore.generateRandom()
         boardStore.generateRandom()
     }
-
-    function saveScore() {
-        addScore($scoreStore)
-        gameState.set('saving')
-    }
 </script>
 
 <div
@@ -22,8 +16,8 @@
     style:width="calc({width}px + 0.5rem)"
     style:height="calc({width}px + 0.5rem)"
 >
+    <h2>Saving Results...</h2>
     <button on:click={playAgain}>Play Again</button>
-    <button on:click={saveScore}>Save Score</button>
 </div>
 
 <style lang="scss">
@@ -35,11 +29,11 @@
         position: absolute;
         top: -0.25rem;
         left: -0.25rem;
-        background-color: #1f0303ea;
+        background-color: #031f07ea;
         border-radius: 0.8rem;
     }
     button {
-        background-color: #d31b1b;
+        background-color: #6ed31b;
         padding: 0.5rem 1rem;
         border-radius: 0.25rem;
         border: none;
@@ -49,7 +43,10 @@
         margin: 1.75rem;
 
         &:hover {
-            background-color: #ff3333;
+            background-color: #a1f76f;
         }
+    }
+    h2 {
+        color: #fff;
     }
 </style>

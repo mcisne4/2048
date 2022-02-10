@@ -1,3 +1,4 @@
+import { get } from 'svelte/store'
 import { abi } from '../contracts/score-keeper-abi'
 import { 
     topScores,
@@ -6,6 +7,7 @@ import {
     userScoresStore,
     userHighScoreStore,
 } from '../stores/scoreKeeperStore'
+import { userStore } from '../stores/user'
 
 
 async function readFunction(functionName, params = undefined){
@@ -104,5 +106,29 @@ export async function chainListener(){
         return unsubscribe
     } catch (err) {
         console.error('chainListener() Error:\n', err)
+    }
+}
+
+
+// --- FUNCTION: addScore() ---
+export async function addScore(score){
+    try {
+        let sendOptions = {
+            contractAddress: "0xf36bF3A42295581c6f6864Dd775e5E0A2f9eB655",
+            functionName: 'addOneScore',
+            abi,
+            params: {
+                _score: score,
+                _username: get(userStore)
+            }
+        }
+
+        console.log(sendOptions)
+        const transaction = await Moralis.executeFunction(sendOptions)
+        await transaction.wait()
+        getUserScores()
+        getHighScores()
+    } catch (err) {
+        console.error('addScore() Error:\n', err)
     }
 }
