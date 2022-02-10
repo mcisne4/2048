@@ -56,7 +56,6 @@
         class:tile-16={value === 65536}
         class:tile-17={value === 131072}
     >
-        <!-- <h2 class="value">{value}</h2> -->
         <h2 class="value" style:font-size={fontSize}>{value}</h2>
     </div>
 </div>
@@ -69,8 +68,6 @@
         padding: 0.3rem;
     }
     .tile {
-        // background-color: #01232e;
-        // background-color: red;
         display: flex;
         flex-grow: 1;
         width: 100%;

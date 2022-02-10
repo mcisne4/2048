@@ -24,7 +24,6 @@
     .network {
         display: flex;
         align-items: center;
-        /* height: 2rem; */
         justify-content: flex-end;
     }
     .name {

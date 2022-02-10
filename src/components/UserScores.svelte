@@ -7,8 +7,6 @@
 
     let recentScores = []
 
-    // userScoresStore.set([13216, 1565, 12, 0, 9648, 863145])
-
     $: {
         let scores = []
         $userScoresStore.forEach((value, index) => {

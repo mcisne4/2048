@@ -47,8 +47,7 @@
     <p class="note">
         <em>
             <b>NOTE:</b> The game currently requires MetaMask and is only running
-            on the Rinkeby (Ethereum Testnet) network and the Mumbai (Polygon Testnet)
-            network
+            on the Rinkeby (Ethereum Testnet) network
         </em>
     </p>
 </div>

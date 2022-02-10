@@ -1,13 +1,6 @@
 <script>
     import { topScores, topUsernames } from '../stores/scoreKeeperStore'
     import InfoColumnCard from './InfoColumnCard.svelte'
-
-    // topScores.set([23456, 426893, 1248])
-    // topUsernames.set([
-    //     'aliw03sowi.crypto',
-    //     'another-user.crypto',
-    //     'a-really-really-long-cool-name.works',
-    // ])
 </script>
 
 <InfoColumnCard>
@@ -32,7 +25,6 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        /* justify-content: center; */
         font-size: 0.9rem;
     }
     .index {
@@ -41,7 +33,6 @@
     .value {
         color: aqua;
         margin: 0 0.5rem;
-        /* font-size: 0.5rem; */
     }
     .username {
         color: blueviolet;
@@ -49,9 +40,4 @@
         letter-spacing: 0.05rem;
         font-weight: 600;
     }
-    /* .high-score {
-        font-weight: 700;
-        font-size: 1.4rem;
-        color: #91ca0d;
-    } */
 </style>

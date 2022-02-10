@@ -20,7 +20,6 @@ function createUserStore(){
 
             if(user){
                 set(user.idToken.sub)
-                // const web3 = await Moralis.enableWeb3({ provider: "metamask" })
                 await Moralis.enableWeb3({ provider: "metamask" })
                 await getChain()
             }

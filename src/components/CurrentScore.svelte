@@ -1,5 +1,4 @@
 <script>
-    // import { currentScoreStore } from '../stores/currentScoreStore'
     import { scoreStore } from '../stores/gameStore'
     import InfoColumnCard from './InfoColumnCard.svelte'
 </script>
@@ -7,7 +6,6 @@
 <InfoColumnCard flexGrow="2">
     <div class="center">
         <h3>Current Store</h3>
-        <!-- <h2>{$currentScoreStore}</h2> -->
         <h2>{$scoreStore}</h2>
     </div>
 </InfoColumnCard>
