@@ -4,6 +4,8 @@
 
 The popular game 2048 comes to the web3 ecosystem as a decentralized application. Login to the application using your Unstoppable Domains account. Play the game and save your scores to the blockchain. Compete with other players to get the top scores.
 
+[Video Sample](https://www.youtube.com/watch?v=3TyNFo4SUG0)
+
 ![Home](./other/2048-home.png)
 ![App](./other/2048-app.png)
 
